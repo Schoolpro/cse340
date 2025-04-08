@@ -1,0 +1,15 @@
+<!-- Heading section -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else { %>
+    <h1>Oops! Something went wrong.</h1>
+  <% } %>
+  
+  <!--  Message display -->
+  <p><%- message %></p>
+  
+  <!-- Humor -->
+  <div style="margin-top: 2rem;">
+    <img src="https://http.cat/404" alt="Funny Error Cat" style="max-width: 300px;" />
+    <p>Don't worry, our developers have been notified... maybe. 🐱‍💻</p>
+  </div>

@@ -416,3 +416,93 @@ footer {
   font-size: 1rem;
   list-style-type: none;
 }
+
+
+/* Inventory edit form style */
+
+.edit-inventory-form,
+.add-inventory-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+}
+
+.edit-inventory-form label,
+.add-inventory-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.edit-inventory-form input,
+.edit-inventory-form select,
+.edit-inventory-form textarea,
+.add-inventory-form input,
+.add-inventory-form select,
+.add-inventory-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.edit-inventory-form button,
+.add-inventory-form button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #005baa;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-inventory-form button:hover,
+.add-inventory-form button:hover {
+  background-color: #004080;
+}
+
+/*Delete Item Style*/
+.notice.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.form-delete {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+input[readonly] {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}

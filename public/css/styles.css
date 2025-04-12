@@ -635,3 +635,23 @@ input[readonly] {
     }
   }
   
+  @media screen and (max-width: 486px) {
+    .car-details {
+      position: static !important;
+      transform: none !important;
+      margin: 1rem auto;
+      max-width: 90%;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  
+    .delorean-info {
+      position: static !important;
+      margin-bottom: 1rem;
+    }
+  
+    .delorean-upgrades {
+      margin-top: 0;
+    }
+  }
+  

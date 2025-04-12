@@ -101,7 +101,7 @@ nav ul li:hover {
   left: 5%;
   /* Adjusted to make it more to the left */
   transform: translate(-20%, 0);
-  /* Matches the `left` adjustment */
+  /* Matches the left adjustment */
   background-color: rgba(255, 255, 255, 0.5);
   padding: 15px;
   border-radius: 8px;
@@ -506,3 +506,132 @@ input[readonly] {
 .btn-danger:hover {
   background-color: #c82333;
 }
+
+
+@media screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  header .siteName a {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  header #tools {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+  }
+
+  header #tools a {
+    width: 100%;
+    font-size: 1rem;
+    padding: 5px 10px;
+    box-sizing: border-box;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  nav ul li {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  .login-form {
+    width: 90%;
+    max-width: 300px;
+    padding: 1rem;
+  }
+}
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* ========================
+   Update Account Page Style
+   ======================== */
+
+   .account-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .account-form h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 1rem;
+  }
+  
+  .account-form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .account-form input {
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .account-form button {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .account-form button:hover {
+    background-color: #001f4d;
+  }
+  
+  .account-form p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .account-form {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+  
+    .account-form button {
+      padding: 0.7rem;
+      font-size: 0.95rem;
+    }
+  
+    .account-form h2 {
+      font-size: 1.5rem;
+    }
+  }
+  

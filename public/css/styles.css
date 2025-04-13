@@ -859,3 +859,24 @@ input[readonly] {
     margin-right: 5px;
   }
   
+  .vehicle-detail ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .vehicle-detail li {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    color: #333;
+    /* Removemos cualquier estilo que los separe */
+    display: block;
+  }
+  .vehicle-box {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  

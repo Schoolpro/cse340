@@ -13,6 +13,13 @@ router.get(
 )
 
 // ----------------------------
+// Route to build vehicle detail view (pública)
+router.get(
+  "/detail/:inv_id",
+  utilities.handleErrors(invController.buildDetail)
+)
+
+// ----------------------------
 // Management view (protegida)
 router.get(
   "/",
@@ -98,6 +105,14 @@ router.post(
   utilities.checkLogin,
   utilities.checkAccountType,
   utilities.handleErrors(invController.deleteInventory)
+)
+
+// ----------------------------
+// Ruta para recibir comentarios desde el formulario
+router.post(
+  "/comment",
+  utilities.checkLogin,
+  utilities.handleErrors(invController.postComment)
 )
 
 module.exports = router

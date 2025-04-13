@@ -1,7 +1,9 @@
 const invModel = require("../models/inventory-model")
-const utilities = require("../utilities/")
+const utilities = require("../utilities")
+const commentModel = require("../models/comment-model") 
 
-const invCont = {}
+const invCont = {} 
+
 
 /* ***************************
  *  Build inventory by classification view
@@ -310,6 +312,74 @@ invCont.deleteInventory = async function (req, res, next) {
     res.redirect(`/inv/delete/${inv_id}`)
   }
 }
+
+
+
+
+/* **********************************
+ * Procesar y guardar un comentario enviado por un cliente
+ * **********************************
+ * Esta función se ejecuta cuando un usuario logueado envía un comentario desde
+ * la página de detalle de un vehículo. Toma el ID del vehículo y el texto del 
+ * comentario del formulario, junto con el ID del usuario logueado desde la cookie.
+ * Luego llama a la función del modelo para guardar el comentario en la base de datos.
+ * Si todo sale bien, redirige nuevamente a la página del vehículo con un mensaje de éxito.
+ * Si ocurre un error, redirige también con un mensaje de error.
+ */
+
+
+invCont.postComment = async function (req, res) {
+  const { inv_id, comment_text } = req.body
+  const account_id = res.locals.accountData.account_id
+  const nav = await utilities.getNav()
+
+  try {
+    const result = await invModel.addComment(account_id, inv_id, comment_text)
+    if (result) {
+      req.flash("notice", "Comment submitted successfully.")
+    } else {
+      req.flash("notice", "Failed to submit comment.")
+    }
+    res.redirect("/inv/detail/" + inv_id)
+  } catch (error) {
+    console.error("Error posting comment:", error.message)
+    req.flash("notice", "An error occurred. Please try again.")
+    res.redirect("/inv/detail/" + inv_id)
+  }
+}
+
+
+
+/* ****************************************
+ *  Build the vehicle detail view
+ *  Gets one vehicle by ID and renders the detail.ejs view
+ *  Used to display vehicle info and associated user comments
+ **************************************** */
+invCont.buildDetail = async function (req, res, next) {
+  try {
+    const inv_id = req.params.inv_id
+    const data = await invModel.getInventoryById(inv_id)
+    const comments = await invModel.getCommentsByInvId(inv_id)
+    const nav = await utilities.getNav()
+
+    if (!data) {
+      throw new Error("Vehicle not found")
+    }
+
+    res.render("inventory/detail", {
+      title: `${data.inv_make} ${data.inv_model}`,
+      nav,
+      vehicle: data,
+      comments,
+      loggedin: res.locals.loggedin
+    })
+  } catch (err) {
+    next(err)
+  }
+}
+
+
+
 
 
 

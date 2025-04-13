@@ -167,6 +167,53 @@ async function deleteInventoryItem(inv_id) {
   }
 }
 
+
+
+
+/* ***************************
+ * Insertar comentario para un vehículo
+ * ************************** */
+async function addComment(account_id, inv_id, comment_text) {
+  try {
+    const sql = `
+      INSERT INTO vehicle_comments (inv_id, account_id, comment_text)
+      VALUES ($1, $2, $3)
+      RETURNING *;
+    `
+    const result = await pool.query(sql, [inv_id, account_id, comment_text])
+    return result.rows[0]
+  } catch (error) {
+    console.error("addComment error:", error.message)
+    throw error
+  }
+}
+
+
+
+/* ***************************
+ * Obtener comentarios por inv_id
+ * ************************** */
+async function getCommentsByInvId(inv_id) {
+  try {
+    const sql = `
+      SELECT c.comment_id, c.comment_text, c.created_at,
+             a.account_firstname, a.account_lastname
+      FROM vehicle_comments AS c
+      JOIN account AS a ON c.account_id = a.account_id
+      WHERE c.inv_id = $1
+      ORDER BY c.created_at ASC;
+
+    `
+    const result = await pool.query(sql, [inv_id])
+    return result.rows
+  } catch (error) {
+    console.error("getCommentsByInvId error:", error.message)
+    return []
+  }
+}
+
+
+
 module.exports = {
   getClassifications, 
   getInventoryByClassificationId, 
@@ -174,5 +221,7 @@ module.exports = {
   addInventory,
   getInventoryById,
   updateInventory,
-  deleteInventoryItem // <- agregado
+  deleteInventoryItem,
+  addComment,
+  getCommentsByInvId,
 }

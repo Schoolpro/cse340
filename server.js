@@ -20,6 +20,7 @@ const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 
+
 /* ***********************
  * Middleware
  ************************/
@@ -67,6 +68,8 @@ app.use(static)
 app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)
 
+
+
 /* ***********************
  * Index Route
  *************************/
@@ -106,3 +109,4 @@ const host = process.env.HOST
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
+
